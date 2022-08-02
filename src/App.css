@@ -5,11 +5,13 @@
 div{
     box-sizing: border-box;
 }
+/* list */
 .list{
     padding-left:20px;
     text-align: left;
     border-bottom: 1px solid gray;
 }
+/* nav */
 .black-nav{
     display:flex;
     background: #000;
@@ -17,11 +19,18 @@ div{
     color: #fff;
     padding-left:20px;
 }
+/* logo */
 .App-logo {
     height: 40vmin;
     pointer-events: none;
 }
-
+/* modal */
+.modal{
+    margin-top:20px;
+    padding: 20px;
+    background: #eee;
+    text-align: left;
+}
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
