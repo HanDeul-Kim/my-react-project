@@ -38,7 +38,6 @@ function App() {
                 <h4 onClick={() => { setModal(!modal) }}>{title[2]}</h4>
                 <p>7월 29일 발행</p>
             </div> */}
-
             {
                 title.map((val,idx) => {
                     return (
