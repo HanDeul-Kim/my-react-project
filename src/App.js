@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -6,8 +5,9 @@ import { useState } from 'react';
 function App() {
 
     let [title, setTitle] = useState(['남자코트 추천', '강남 우동 맛집', '파이썬독학']);
-    let [thumbs, setThumbs] = useState([0,0,0]);
+    let [thumbs, setThumbs] = useState([0, 0, 0]);
     let [modal, setModal] = useState(false);
+    let [currentTitle, setCurrentTitle] = useState('');
     return (
         <div className="App">
             <div className="black-nav">
@@ -26,25 +26,12 @@ function App() {
                 setTitle(copy)
             }}>글 수정</button>
 
-            {/* <div className="list">
-                <h4>{title[0]} <span onClick={() => { setThumbs(thumbs + 1) }}>👍</span> {thumbs} </h4>
-                <p>7월 29일 발행</p>
-            </div>
-            <div className="list">
-                <h4>{title[1]}</h4>
-                <p>7월 29일 발행</p>
-            </div>
-            <div className="list">
-                <h4 onClick={() => { setModal(!modal) }}>{title[2]}</h4>
-                <p>7월 29일 발행</p>
-            </div> */}
-
             {
-                title.map((val,idx) => {
+                title.map((val, idx) => {
                     return (
                         <div className="list">
-                            <h4 onClick={ () => { setModal(!modal) }}>{title[idx]} <span onClick={ () => {
-                                let copy = [...thumbs];
+                            <h4 onClick={() => { setModal(!modal); setCurrentTitle(idx)}}>{title[idx]} <span onClick={() => {
+                                let copy = thumbs;
                                 copy[idx] = copy[idx] + 1;
                                 setThumbs(copy);
                             }}>👍 {thumbs[idx]}</span></h4>
@@ -54,18 +41,19 @@ function App() {
                 })
             }
             {
-                modal == true ? <Modal /> : false
+                modal == true ? <Modal title={title} currentTitle={currentTitle}/> : false
             }
         </div>
     );
 }
 
-function Modal() {
+function Modal(props) {
     return (
         <div className="modal">
-            <h4>제목</h4>
+            <h4>{props.title[props.currentTitle]}</h4>
             <p>날짜</p>
             <p>상세내용</p>
+            <button>글 수정</button>
         </div>
     )
 }
